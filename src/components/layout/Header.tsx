@@ -87,14 +87,14 @@ export function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: EASE }}
-            className="fixed inset-0 z-50 bg-ink/95 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-50 bg-ink md:hidden"
           >
-            <div className="h-16 px-6 flex items-center justify-between border-b border-stroke/60">
+            <div className="h-16 px-5 flex items-center justify-between border-b border-stroke bg-deep/70 shadow-lg shadow-ink/40">
               <div className="flex items-center gap-2">
-                <Logo variant="mark" className="h-12" />
+                <Logo variant="mark" className="h-10" />
                 <span
                   aria-hidden="true"
-                  className="font-display font-semibold text-2xl tracking-tight leading-none"
+                  className="font-display font-semibold text-xl tracking-tight leading-none"
                 >
                   <span className="text-paper">tren</span>
                   <span className="text-sky">ova</span>
@@ -104,7 +104,7 @@ export function Header() {
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Cerrar menú"
-                className="inline-flex items-center justify-center w-10 h-10 rounded-md text-paper hover:bg-paper/5 transition-colors"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-paper/5 text-paper hover:bg-paper/10 transition-colors"
               >
                 <X className="h-5 w-5" aria-hidden="true" />
               </button>
@@ -112,7 +112,7 @@ export function Header() {
 
             <nav
               aria-label="Móvil"
-              className="px-6 py-8 flex flex-col"
+              className="px-5 py-5 flex flex-col bg-ink"
             >
               {NAV.map((item, idx) => (
                 <motion.a
@@ -126,7 +126,7 @@ export function Header() {
                     delay: 0.05 + idx * 0.05,
                     ease: EASE,
                   }}
-                  className="font-display text-3xl font-semibold text-paper py-4 border-b border-stroke/40"
+                  className="rounded-md border-b border-stroke/70 px-1 py-3.5 text-base font-medium leading-6 text-paper/90 hover:bg-paper/5 hover:text-paper transition-colors"
                 >
                   {item.label}
                 </motion.a>
@@ -141,7 +141,7 @@ export function Header() {
                   delay: 0.05 + NAV.length * 0.05,
                   ease: EASE,
                 }}
-                className="mt-8 inline-flex items-center justify-center rounded-pill bg-electric px-6 py-3.5 text-base font-medium text-paper hover:bg-sky transition-colors"
+                className="mt-6 inline-flex items-center justify-center rounded-pill bg-electric px-5 py-3 text-sm font-medium text-paper shadow-lg shadow-electric/20 hover:bg-sky transition-colors"
               >
                 Hablemos
               </motion.a>
