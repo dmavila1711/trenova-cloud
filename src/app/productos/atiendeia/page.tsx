@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { AtiendeIaHero } from "@/components/sections/atiendeia/AtiendeIaHero";
 import { AtiendeIaProblem } from "@/components/sections/atiendeia/AtiendeIaProblem";
 import { AtiendeIaHowItWorks } from "@/components/sections/atiendeia/AtiendeIaHowItWorks";
+import { AtiendeIaShowcase } from "@/components/sections/atiendeia/AtiendeIaShowcase";
 import { AtiendeIaBenefits } from "@/components/sections/atiendeia/AtiendeIaBenefits";
 import { AtiendeIaTrust } from "@/components/sections/atiendeia/AtiendeIaTrust";
 import { AtiendeIaForWho } from "@/components/sections/atiendeia/AtiendeIaForWho";
@@ -73,6 +74,18 @@ export default function AtiendeIaPage() {
         <AtiendeIaHero />
         <AtiendeIaProblem />
         <AtiendeIaHowItWorks />
+        <AtiendeIaShowcase
+          eyebrow="Registro"
+          title="Cada prospecto queda registrado."
+          description="Quien te escribe queda guardado con su interés, estado y prioridad. Nada se pierde entre conversaciones, y tu equipo ve a quién hay que dar seguimiento."
+          image={{
+            src: "/images/products/atiendeia/prospectos-escritorio.webp",
+            alt: "Base de prospectos de AtiendeIA con interés, estado y prioridad de cada contacto",
+            width: 1400,
+            height: 629,
+          }}
+          imageSide="right"
+        />
         <AtiendeIaBenefits />
         <AtiendeIaTrust />
         <AtiendeIaForWho />

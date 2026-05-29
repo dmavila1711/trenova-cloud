@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/ui/Reveal";
+import { DeviceFrame } from "@/components/ui/DeviceFrame";
 
 type TrustItem = {
   num: string;
@@ -27,15 +28,14 @@ const TRUST: readonly TrustItem[] = [
   {
     num: "04",
     title: "El equipo conserva el control.",
-    description:
-      "Cada conversación queda visible. Tú decides cuándo entrar.",
+    description: "Cada conversación queda visible. Tú decides cuándo entrar.",
   },
 ];
 
 export function AtiendeIaTrust() {
   return (
     <section className="px-6 py-24 md:py-32">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <Reveal>
           <p className="font-mono text-xs tracking-[0.3em] text-sky uppercase">
             Confianza
@@ -43,36 +43,42 @@ export function AtiendeIaTrust() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <h2 className="font-display text-4xl sm:text-5xl font-semibold tracking-tight text-paper mt-4 mb-16">
+          <h2 className="font-display text-4xl sm:text-5xl font-semibold tracking-tight text-paper mt-4 mb-16 max-w-3xl">
             No es un robot que responde cualquier cosa.
           </h2>
         </Reveal>
 
-        <div>
-          {TRUST.map((item, idx) => {
-            const isLast = idx === TRUST.length - 1;
-            return (
-              <Reveal key={item.num} delay={0.15 + idx * 0.1}>
-                <div
-                  className={`grid grid-cols-1 md:grid-cols-[100px_1fr] gap-3 md:gap-10 py-8 md:py-10 border-t border-stroke/40 ${
-                    isLast ? "border-b" : ""
-                  }`}
-                >
-                  <p className="font-display text-3xl md:text-5xl text-electric leading-none">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <Reveal delay={0.15}>
+            <DeviceFrame
+              variant="browser"
+              src="/images/products/atiendeia/base-conocimiento-escritorio.webp"
+              alt="Base de conocimiento de AtiendeIA: las respuestas salen de la información que el negocio carga"
+              width={1400}
+              height={627}
+              sizes="(min-width: 1024px) 48vw, 100vw"
+            />
+          </Reveal>
+
+          <ul>
+            {TRUST.map((item, idx) => (
+              <Reveal key={item.num} delay={0.2 + idx * 0.08}>
+                <li className="flex gap-5 py-5 border-t border-stroke/40 last:border-b">
+                  <span className="font-display text-2xl md:text-3xl text-electric leading-none flex-shrink-0">
                     {item.num}
-                  </p>
+                  </span>
                   <div>
-                    <h3 className="font-display text-2xl md:text-3xl font-semibold tracking-tight text-paper mb-3">
+                    <h3 className="font-display text-lg md:text-xl font-semibold tracking-tight text-paper mb-1.5">
                       {item.title}
                     </h3>
-                    <p className="text-mute text-sm sm:text-base leading-relaxed max-w-2xl">
+                    <p className="text-mute text-sm sm:text-base leading-relaxed">
                       {item.description}
                     </p>
                   </div>
-                </div>
+                </li>
               </Reveal>
-            );
-          })}
+            ))}
+          </ul>
         </div>
       </div>
     </section>
