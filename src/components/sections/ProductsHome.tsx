@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
+import { DeviceFrame } from "@/components/ui/DeviceFrame";
 import { PRODUCTS } from "@/lib/constants";
 
 export function ProductsHome() {
@@ -28,7 +29,7 @@ export function ProductsHome() {
                   href={product.href}
                   className="group block bg-deep border border-stroke rounded-card p-8 md:p-12 transition-all duration-300 hover:border-sky/40 hover:-translate-y-0.5"
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-8 md:gap-12 items-center">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
                     <div>
                       <Icon
                         className="h-9 w-9 text-electric mb-6"
@@ -41,6 +42,22 @@ export function ProductsHome() {
                       <p className="font-display text-2xl md:text-3xl font-semibold tracking-tight text-paper leading-snug mb-6">
                         {product.tagline}
                       </p>
+
+                      <ul className="flex flex-col gap-3 mb-8">
+                        {product.benefits.map((benefit) => (
+                          <li
+                            key={benefit}
+                            className="flex gap-3 text-paper/90 text-sm sm:text-base leading-relaxed"
+                          >
+                            <span
+                              aria-hidden="true"
+                              className="mt-2 h-1.5 w-1.5 rounded-full bg-electric flex-shrink-0"
+                            />
+                            {benefit}
+                          </li>
+                        ))}
+                      </ul>
+
                       <span className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] text-paper uppercase group-hover:text-sky transition-colors">
                         {product.cta}
                         <ArrowRight
@@ -50,20 +67,14 @@ export function ProductsHome() {
                       </span>
                     </div>
 
-                    <ul className="flex flex-col gap-4 md:border-l md:border-stroke/60 md:pl-12">
-                      {product.benefits.map((benefit) => (
-                        <li
-                          key={benefit}
-                          className="flex gap-3 text-paper/90 text-sm sm:text-base leading-relaxed"
-                        >
-                          <span
-                            aria-hidden="true"
-                            className="mt-2 h-1.5 w-1.5 rounded-full bg-electric flex-shrink-0"
-                          />
-                          {benefit}
-                        </li>
-                      ))}
-                    </ul>
+                    <DeviceFrame
+                      variant="browser"
+                      src={product.image.src}
+                      alt={product.image.alt}
+                      width={product.image.width}
+                      height={product.image.height}
+                      sizes="(min-width: 1024px) 44vw, 100vw"
+                    />
                   </div>
                 </Link>
               </Reveal>

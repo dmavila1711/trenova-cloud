@@ -197,6 +197,12 @@ type Product = {
   benefits: readonly string[];
   href: string;
   cta: string;
+  image: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
 };
 
 export const PRODUCTS: readonly Product[] = [
@@ -211,6 +217,12 @@ export const PRODUCTS: readonly Product[] = [
     ],
     href: "/productos/atiendeia",
     cta: "Conocer AtiendeIA",
+    image: {
+      src: "/images/products/atiendeia/conversaciones-escritorio.webp",
+      alt: "Panel de AtiendeIA atendiendo conversaciones de WhatsApp",
+      width: 1400,
+      height: 626,
+    },
   },
 ];
 
