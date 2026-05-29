@@ -38,8 +38,8 @@ export function Header() {
             aria-hidden="true"
             className="font-display font-semibold text-2xl sm:text-3xl tracking-tight leading-none"
           >
-            <span className="text-paper">tren</span>
-            <span className="text-sky">ova</span>
+            <span className="text-paper">tre</span>
+            <span className="text-sky">nova</span>
           </span>
         </Link>
 
@@ -48,23 +48,23 @@ export function Header() {
           className="hidden md:flex items-center gap-8"
         >
           {NAV.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               className="text-sm text-paper/80 hover:text-paper transition-colors"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
-            href="#contacto"
+          <Link
+            href="/#contacto"
             className="hidden md:inline-flex items-center rounded-pill bg-electric px-5 py-2.5 text-sm font-medium text-paper hover:bg-sky transition-colors"
           >
             Hablemos
-          </a>
+          </Link>
 
           <button
             type="button"
@@ -96,8 +96,8 @@ export function Header() {
                   aria-hidden="true"
                   className="font-display font-semibold text-xl tracking-tight leading-none"
                 >
-                  <span className="text-paper">tren</span>
-                  <span className="text-sky">ova</span>
+                  <span className="text-paper">tre</span>
+                  <span className="text-sky">nova</span>
                 </span>
               </div>
               <button
@@ -115,10 +115,8 @@ export function Header() {
               className="px-5 py-5 flex flex-col bg-ink"
             >
               {NAV.map((item, idx) => (
-                <motion.a
+                <motion.div
                   key={item.href}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
@@ -126,14 +124,17 @@ export function Header() {
                     delay: 0.05 + idx * 0.05,
                     ease: EASE,
                   }}
-                  className="rounded-md border-b border-stroke/70 px-1 py-3.5 text-base font-medium leading-6 text-paper/90 hover:bg-paper/5 hover:text-paper transition-colors"
                 >
-                  {item.label}
-                </motion.a>
+                  <Link
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="block rounded-md border-b border-stroke/70 px-1 py-3.5 text-base font-medium leading-6 text-paper/90 hover:bg-paper/5 hover:text-paper transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
               ))}
-              <motion.a
-                href="#contacto"
-                onClick={() => setOpen(false)}
+              <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -141,10 +142,16 @@ export function Header() {
                   delay: 0.05 + NAV.length * 0.05,
                   ease: EASE,
                 }}
-                className="mt-6 inline-flex items-center justify-center rounded-pill bg-electric px-5 py-3 text-sm font-medium text-paper shadow-lg shadow-electric/20 hover:bg-sky transition-colors"
+                className="mt-6"
               >
-                Hablemos
-              </motion.a>
+                <Link
+                  href="/#contacto"
+                  onClick={() => setOpen(false)}
+                  className="inline-flex items-center justify-center rounded-pill bg-electric px-5 py-3 text-sm font-medium text-paper shadow-lg shadow-electric/20 hover:bg-sky transition-colors"
+                >
+                  Hablemos
+                </Link>
+              </motion.div>
             </nav>
           </motion.div>
         )}

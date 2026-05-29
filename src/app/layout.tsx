@@ -28,7 +28,7 @@ const SITE_URL = "https://trenovacloud.com.mx";
 const SITE_NAME = "Trenova Cloud";
 const SITE_TAGLINE = "Tecnología que entrelaza";
 const SITE_DESCRIPTION =
-  "Firma boutique de tecnología empresarial. Convertimos procesos complejos en soluciones digitales simples: software a la medida, automatización, IA y WhatsApp Business.";
+  "Firma de ingeniería empresarial. Convertimos procesos complejos en soluciones digitales simples: software a la medida, automatización, IA y WhatsApp Business.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -63,20 +63,11 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} — ${SITE_TAGLINE}`,
     description: SITE_DESCRIPTION,
     locale: "es_MX",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: `${SITE_NAME} — ${SITE_TAGLINE}`,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} — ${SITE_TAGLINE}`,
     description: SITE_DESCRIPTION,
-    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -94,6 +85,9 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  verification: {
+    google: "ZpshGh8rblrtKpxQ-ktwM0Tz2Z7eJ9FDsy-jfltpliI",
+  },
 };
 
 export const viewport: Viewport = {
@@ -101,6 +95,27 @@ export const viewport: Viewport = {
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "León",
+    addressRegion: "Guanajuato",
+    addressCountry: "MX",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+524772762700",
+    email: "contacto@trenovacloud.com.mx",
+    contactType: "customer service",
+    availableLanguage: "es-MX",
+  },
 };
 
 export default function RootLayout({
@@ -111,7 +126,13 @@ export default function RootLayout({
       lang="es-MX"
       className={`${bricolage.variable} ${hanken.variable} ${jetbrains.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

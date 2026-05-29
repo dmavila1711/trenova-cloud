@@ -9,6 +9,11 @@ import {
   HardHat,
   Store,
   Layers,
+  Layout,
+  Database,
+  BrainCircuit,
+  Cable,
+  MessagesSquare,
   type LucideIcon,
 } from "lucide-react";
 
@@ -22,19 +27,24 @@ export const SITE = {
 export const CONTACT = {
   whatsapp: "524772762700",
   whatsappDisplay: "+52 477 276 2700",
-  email: "TODO",
+  email: "contacto@trenovacloud.com.mx",
 } as const;
 
 export const WHATSAPP_URL = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(
   "Hola Trenova, me gustaría conversar sobre un proyecto."
 )}`;
 
+export const EMAIL_URL = `mailto:${CONTACT.email}?subject=${encodeURIComponent(
+  "Trenova Cloud — Consulta"
+)}`;
+
 export const NAV = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Casos", href: "#casos" },
-  { label: "Método", href: "#metodo" },
-  { label: "Tecnologías", href: "#tecnologias" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Servicios", href: "/#servicios" },
+  { label: "Casos", href: "/#casos" },
+  { label: "Productos", href: "/#productos" },
+  { label: "Método", href: "/#metodo" },
+  { label: "Apuntes", href: "/#apuntes" },
+  { label: "Contacto", href: "/#contacto" },
 ] as const;
 
 type Service = {
@@ -171,5 +181,64 @@ export const METHOD: readonly MethodStep[] = [
     title: "Operación",
     description:
       "Implementación, capacitación, migración de datos. Después: soporte, evolución continua y mejoras basadas en uso real.",
+  },
+];
+
+type TechCategory = {
+  name: string;
+  icon: LucideIcon;
+  items: readonly string[];
+};
+
+type Product = {
+  icon: LucideIcon;
+  name: string;
+  tagline: string;
+  benefits: readonly string[];
+  href: string;
+  cta: string;
+};
+
+export const PRODUCTS: readonly Product[] = [
+  {
+    icon: MessagesSquare,
+    name: "AtiendeIA",
+    tagline: "Tu WhatsApp, respondido al instante.",
+    benefits: [
+      "Responde con la información real de tu negocio.",
+      "Te avisa cuando una conversación necesita una persona.",
+      "Registra a cada prospecto para que no se pierda nadie.",
+    ],
+    href: "/productos/atiendeia",
+    cta: "Conocer AtiendeIA",
+  },
+];
+
+export const TECHNOLOGIES: readonly TechCategory[] = [
+  {
+    name: "Frontend",
+    icon: Layout,
+    items: ["Next.js", "React", "TypeScript", "Tailwind"],
+  },
+  {
+    name: "Backend",
+    icon: Database,
+    items: ["Node.js", "Python", ".NET", "PostgreSQL"],
+  },
+  {
+    name: "IA",
+    icon: BrainCircuit,
+    items: ["OpenAI", "Anthropic Claude"],
+  },
+  {
+    name: "Integraciones",
+    icon: Cable,
+    items: [
+      "WhatsApp Business API",
+      "Stripe",
+      "Mercado Pago",
+      "PayPal",
+      "Oxxo Pay",
+    ],
   },
 ];

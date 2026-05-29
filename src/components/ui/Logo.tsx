@@ -69,8 +69,8 @@ export function Logo({ variant = "full", className, ariaLabel }: LogoProps) {
             fontWeight="700"
             letterSpacing="-1"
           >
-            <tspan fill="#F4F6FC">tren</tspan>
-            <tspan fill="#6B97FF">ova</tspan>
+            <tspan fill="#F4F6FC">tre</tspan>
+            <tspan fill="#6B97FF">nova</tspan>
           </text>
           <text
             x="234"

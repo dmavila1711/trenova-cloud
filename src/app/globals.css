@@ -20,6 +20,13 @@
   --font-mono: var(--font-jetbrains);
 }
 
+@utility scrollbar-hide {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @layer base {
   html {
     color-scheme: dark;
